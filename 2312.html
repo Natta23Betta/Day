@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุขสันต์วันเกิด</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFE5E5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><text x="5%" y="5%" fill="rgba(255,182,193,0.3)" font-size="20" transform="rotate(45 50 50)">HAPPY BIRTH</text></svg>');
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #FF69B4;
+        }
+        input {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #FF69B4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #greeting {
+            display: none;
+        }
+        #message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .signature {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 30%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="password">
+            <h1>สุขสันต์วันเกิดนะคอม</h1>
+            <p>กรุณาใส่รหัสวันเกิด:</p>
+            <input type="number" maxlength="1" id="code1" min="0" max="9" oninput="moveToNext(this, 'code2')">
+            <input type="number" maxlength="1" id="code2" min="0" max="9" oninput="moveToNext(this, 'code3')">
+            <input type="number" maxlength="1" id="code3" min="0" max="9" oninput="moveToNext(this, 'code4')">
+            <input type="number" maxlength="1" id="code4" min="0" max="9">
+            <br>
+            <button onclick="checkCode()">ตรวจสอบรหัส</button>
+        </div>
+        <div id="greeting">
+            <h1>สุขสันต์วันเกิด</h1>
+           <div class="images">
+        <img src="1.jpg" alt="รูปที่ 1" width="150" heigth="150">
+        <img src="2.jpg" alt="รูปที่ 2" width="150" heigth="150">
+        <img src="3.jpg" alt="รูปที่ 3" width="150" heigth="150">
+            </div>
+            <div id="message">
+                <p>วันเกิดปีนี้ขอให้เธอมีสุขภาพแข็งแรงไม่เจ็บไม่ป่วย</p>
+                <p>ร่ำรวยเงินทองและสุขภาพ</p>
+                <p>คิดอะไรก็ขอให้ได้อย่างที่คิดให้ได้อย่างที่หวัง</p>
+                <p>ขอเงินซื้อปลาหน่อย 5555</p>
+                <p class="signature">#รักเสมอจากคนขายปลา</p>
+            </div>
+            <button onclick="goBack()">กลับไปหน้าแรก</button>
+        </div>
+    </div>
+
+    <script>
+        function checkCode() {
+            var code1 = document.getElementById('code1').value;
+            var code2 = document.getElementById('code2').value;
+            var code3 = document.getElementById('code3').value;
+            var code4 = document.getElementById('code4').value;
+            if (code1 === '2' && code2 === '5' && code3 === '1' && code4 === '2') {
+                document.getElementById('password').style.display = 'none';
+                document.getElementById('greeting').style.display = 'block';
+            } else {
+                alert('รหัสไม่ถูกต้อง กรุณาลองใหม่');
+                document.getElementById('code1').value = '';
+                document.getElementById('code2').value = '';
+                document.getElementById('code3').value = '';
+                document.getElementById('code4').value = '';
+            }
+        }
+
+        function moveToNext(currentInput, nextInputId) {
+            if (currentInput.value.length >= 1) {
+                document.getElementById(nextInputId).focus();
+            }
+        }
+
+        function goBack() {
+            document.getElementById('password').style.display = 'block';
+            document.getElementById('greeting').style.display = 'none';
+            document.getElementById('code1').value = '';
+            document.getElementById('code2').value = '';
+            document.getElementById('code3').value = '';
+            document.getElementById('code4').value = '';
+        }
+    </script>
+</body>
+</html>
